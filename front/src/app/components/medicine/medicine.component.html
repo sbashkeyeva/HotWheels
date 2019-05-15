@@ -1,6 +1,12 @@
-<h3 (click)="getMedicines()">MEDICINES: </h3>
 <div>
-  <div *ngFor = "let medicine of medicines">
-      {{medicine.name}}
+  <h1 style="margin-bottom: 20px">Медикоменты:</h1>
+  <div *ngFor="let medicine of medicines" class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">{{medicine.name}}</h1>
+      <h4>Компания: {{medicine.company}}</h4>
+      <p class="lead">{{medicine.description}}</p>
+      <a class="btn btn-primary btn-lg" href="#" role="button">{{medicine.cost}} ТГ</a>
+    </div>
   </div>
 </div>
+

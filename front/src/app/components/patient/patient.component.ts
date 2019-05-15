@@ -30,8 +30,14 @@ export class PatientComponent implements OnInit {
   updatePatient(patient: IPatient) {
     this.provider.updatePatient(patient).then(res => {
       console.log(patient.name + " updated");
+      this.ifUpdatePressed = false;
     });
-    this.ifUpdatePressed = false;
+  }
+  deletePatient(patient: IPatient) {
+    this.provider.deletePatient(patient.id).then(res => {
+      this.ifUpdatePressed = false;
+      this.showPatient = false;
+    });
   }
   getDetailPatient(patient: IPatient) {
     this.showPatient = true;
