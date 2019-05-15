@@ -1,24 +1,44 @@
-import { Component, OnInit } from '@angular/core';
-import { IPatient } from 'src/app/interfaces/interfaces';
-import { ProviderService } from 'src/app/services/provider.service';
+import { Component, OnInit } from "@angular/core";
+import { IPatient } from "src/app/interfaces/interfaces";
+import { ProviderService } from "src/app/services/provider.service";
 
 @Component({
-  selector: 'app-patient',
-  templateUrl: './patient.component.html',
-  styleUrls: ['./patient.component.css']
+  selector: "app-patient",
+  templateUrl: "./patient.component.html",
+  styleUrls: ["./patient.component.css"]
 })
 export class PatientComponent implements OnInit {
   patients: IPatient[] = [];
-
-  constructor(private provider: ProviderService) { }
+  detailPatient: IPatient = {
+    id: 0,
+    name: "",
+    mobile: "",
+    address: ""
+  };
+  showPatient = false;
+  ifUpdatePressed = false;
+  constructor(private provider: ProviderService) {}
 
   ngOnInit() {
-   
-  }
-  
-  getPatients(){
     this.provider.getPatients().then(res => {
       this.patients = res;
-   });
+    });
+  }
+  updatePressed() {
+    this.ifUpdatePressed = true;
+  }
+  updatePatient(patient: IPatient) {
+    this.provider.updatePatient(patient).then(res => {
+      console.log(patient.name + " updated");
+    });
+    this.ifUpdatePressed = false;
+  }
+  getDetailPatient(patient: IPatient) {
+    this.showPatient = true;
+    this.ifUpdatePressed = false;
+    this.detailPatient.name = patient.name;
+    this.detailPatient.id = patient.id;
+    this.detailPatient.mobile = patient.mobile;
+    this.detailPatient.address = patient.address;
   }
 }

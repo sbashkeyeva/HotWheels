@@ -1,6 +1,32 @@
-<h3 (click)="getPatients()">PATIENTS: </h3>
-<div>
-  <div *ngFor = "let patient of patients">
-      {{patient.name}}
-  </div>
+<h3>Пациенты: </h3>
+<div style="margin-top: 20px">
+  <ul  class="list-group">
+    <li *ngFor = "let patient of patients" class="list-group-item" (click)="getDetailPatient(patient)">{{patient.name}}</li>
+  </ul>
 </div>
+<div style="margin-top: 40px" *ngIf="showPatient">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Пациент:</h5>
+      <div>
+        <input *ngIf="ifUpdatePressed" type="text" [(ngModel)]="detailPatient.name" />
+        <h6 *ngIf="!ifUpdatePressed" class="card-subtitle mb-2 ">{{detailPatient.name}}</h6>
+      </div>
+      <div>
+        <p style="margin-bottom: 2px"class="card-text">Адресс:</p>
+        <input *ngIf="ifUpdatePressed" type="text" [(ngModel)]="detailPatient.address" />
+        <p *ngIf="!ifUpdatePressed">{{detailPatient.address}}</p>
+      <div>
+      <div>
+        <p style="margin-bottom: 2px" class="card-text">Телефон:</p>
+        <input *ngIf="ifUpdatePressed" type="text" [(ngModel)]="detailPatient.mobile" />
+        <a *ngIf="!ifUpdatePressed" href="#{{detailPatient.mobile}}" class="card-link">{{detailPatient.mobile}}</a>
+      </div>
+      <div style="margin-top: 20px">
+        <span style="color: red" (click)="deletePatient(detailPatient)"> Удалить</span>
+        <span *ngIf="!ifUpdatePressed" style="color: green" (click)="updatePressed()"> Изменить</span>
+        <span *ngIf="ifUpdatePressed" style="color: green" (click)="updatePatient(detailPatient)"> Сохранить</span>
+      </div>
+    </div>
+  </div>
+<div>
