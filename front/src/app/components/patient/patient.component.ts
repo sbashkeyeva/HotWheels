@@ -37,6 +37,9 @@ export class PatientComponent implements OnInit {
     this.provider.deletePatient(patient.id).then(res => {
       this.ifUpdatePressed = false;
       this.showPatient = false;
+      this.provider.getPatients().then(res => {
+        this.patients = res;
+      });
     });
   }
   getDetailPatient(patient: IPatient) {

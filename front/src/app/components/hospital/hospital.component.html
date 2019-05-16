@@ -1,14 +1,56 @@
 
 <div>
-  <h2 style="text-align: center; margin-bottom: 30px;">Госпитали</h2>
-  <div style="display: flex; flex-direction: row; justify-content: space-around; ">
-    <div *ngFor = "let hospital of hospitals" class="card" style="width: 18rem;">
+  <button type="button" class="btn btn-primary" (click)="showAddHospital()" data-dismiss="modal">Добавить</button><h2 style="text-align: center; margin-bottom: 30px;">Госпитали:</h2>
+  <div *ngIf="ifAddHospitalPressed">
+    <div class="card" style="margin: 0 auto; width: 350px; margin-bottom: 30px;">
       <div class="card-body">
-        <h5 class="card-title">{{hospital.name}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Тип:{{hospital.type}}</h6>
-        <p class="card-text">{{hospital.description}}</p>
-        <p class="card-text">Место:{{hospital.place}}</p>
-        <p class="card-text">Адресс:{{hospital.address}}</p>
+        <div style="margin-top: 20px">
+          <h5>Имя: <input style="margin-left: 30px"  type="text" [(ngModel)]="createHospital.name" /></h5>
+        </div>
+        <div style="margin-top: 20px">
+          <h6>Тип: <input style="margin-left: 35px" type="text" [(ngModel)]="createHospital.type" /></h6>
+        </div>
+        <div style="margin-top: 20px">
+          <p class="card-text">Описание: <input style="margin-left: 17px" type="text" [(ngModel)]="createHospital.description" /></p>
+        </div>
+        <div style="margin-top: 20px">
+          <p class="card-text">Место: <input style="margin-left: 35px"  type="text" [(ngModel)]="createHospital.place" /></p>
+        </div>
+        <div style="margin-top: 20px">
+          <p class="card-text">Адресс: <input style="margin-left: 35px" type="text" [(ngModel)]="createHospital.address" /></p>
+        </div>
+        <div style="margin:0 auto;margin-top:20px;width:200px; text-align: center">
+          <span style="color: green" (click)="createHospitalFunc(createHospital)"> Создать</span>
+        </div>
+      </div>
+    </div>
+    </div>
+  <div style="display: flex; flex-direction: row; justify-content: space-around; ">
+    <div *ngFor = "let hospitalWithNewField of hospitalsWithNewField" class="card" style="width: 18rem;">
+      <div class="card-body">
+        <div>
+          <h5  *ngIf="!hospitalWithNewField.updatePressed" class="card-title">{{hospitalWithNewField.name}}</h5>
+          <h5 *ngIf="hospitalWithNewField.updatePressed" ><input  type="text" [(ngModel)]="hospitalWithNewField.name" /></h5>
+        </div>
+        <div>
+          <h6 *ngIf="!hospitalWithNewField.updatePressed" class="card-subtitle mb-2 text-muted">Тип:{{hospitalWithNewField.type}}</h6>
+          <h6 *ngIf="hospitalWithNewField.updatePressed" class="card-subtitle mb-2 text-muted">Тип:<input  type="text" [(ngModel)]="hospitalWithNewField.type" /></h6>
+        <div>
+        <div>
+          <p *ngIf="!hospitalWithNewField.updatePressed" class="card-text">{{hospitalWithNewField.description}}</p>
+          <p *ngIf="hospitalWithNewField.updatePressed" class="card-text"><input  type="text" [(ngModel)]="hospitalWithNewField.description" /></p>
+        <div>
+        <div>
+          <p *ngIf="!hospitalWithNewField.updatePressed" class="card-text">Место:{{hospitalWithNewField.place}}</p>
+          <p *ngIf="hospitalWithNewField.updatePressed" class="card-text">Место:<input  type="text" [(ngModel)]="hospitalWithNewField.place" /></p>
+        </div>
+        <div>
+          <p *ngIf="!hospitalWithNewField.updatePressed" class="card-text">Адресс:{{hospitalWithNewField.address}}</p>
+          <p *ngIf="hospitalWithNewField.updatePressed" class="card-text">Адресс:<input  type="text" [(ngModel)]="hospitalWithNewField.address" /></p>
+        </div>
+        <span style="color: red" (click)="deleteHospital(hospitalWithNewField)"> Удалить</span>
+        <span *ngIf="!hospitalWithNewField.updatePressed" style="color: green" (click)="updatePressed(hospitalWithNewField.id)"> Изменить</span>
+        <span *ngIf="hospitalWithNewField.updatePressed" style="color: green" (click)="updateHospital(hospitalWithNewField)"> Сохранить</span>
       </div>
     </div>
   </div>

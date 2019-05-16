@@ -114,7 +114,7 @@ export class ProviderService extends MainService {
   }
 
   updateHospital(hospital: IHospital): Promise<IHospital> {
-    return this.put(`http://localhost:8000/api/hospitals/${hospital.id}`, {
+    return this.put(`http://localhost:8000/api/hospitals/${hospital.id}/`, {
       name: hospital.name,
       address: hospital.address,
       type: hospital.type,

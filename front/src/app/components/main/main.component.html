@@ -1,5 +1,5 @@
 <div *ngIf="logged">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav  style="height: 80px" class="navbar navbar-expand-lg navbar-dark bg-dark">
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -7,9 +7,7 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
      <ul class="navbar-nav mr-auto">
-      <!-- <li class="nav-item active">
-        <a routerLink="/home" routerLinkActive="active">Home</a>
-      </li>-->
+      
       <li class="nav-item">
         <a class="nav-link" routerLink="/doctor">Доктора</a>
       </li>
@@ -33,17 +31,122 @@
 
     </form>
      -->
-     <button type="button" class="btn btn-primary" (click)="logout()" data-dismiss="modal">Logout</button>
+     <button type="button" class="btn btn-primary" (click)="logout()" data-dismiss="modal">Выход</button>
   </div>
 </nav>
  <div style="max-width: 1200px; margin: 0 auto; margin-top: 50px">
   <router-outlet></router-outlet>
  </div>
+
+ <footer style="margin-top:250px" class="page-footer font-small unique-color-dark">
+
+  <div style="background-color: #6351ce;">
+    <div class="container">
+
+      <!-- Grid row-->
+      <div class="row py-4 d-flex align-items-center">
+
+        
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row-->
+
+    </div>
+  </div>
+
+  <!-- Footer Links -->
+  <div class="container text-center text-md-left mt-5">
+
+    <!-- Grid row -->
+    <div class="row mt-3">
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+        <!-- Content -->
+        <h6 class="text-uppercase font-weight-bold">Клиники</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>Наша клиники одни из самых надежных в нашем не надежноом городе</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Меню</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <a class="nav-link" routerLink="/medicine">Медицина</a>
+        </p>
+        <p>
+          <a class="nav-link" routerLink="/appointement">Расписание</a>        
+        </p>
+       
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        
+      
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Меню</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <a class="nav-link" routerLink="/doctor">Доктора</a>
+        </p>
+        <p>
+          <a class="nav-link" routerLink="/hospital">Госпитали</a>        
+        </p>
+        <p>
+          <a class="nav-link" routerLink="/patient">Пациенты</a>        
+        </p>
+        
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Контакты</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <i class="fas fa-home mr-3"></i> Алматы, Тлен 23</p>
+        <p>
+          <i class="fas fa-envelope mr-3"></i> klinki@gmail.com</p>
+        <p>
+          <i class="fas fa-phone mr-3"></i> + 7701 224 267 88</p>
+        <p>
+          <i class="fas fa-print mr-3"></i> + 7801 234 267 19</p>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2018 Copyright:
+    <a href=""> Kbtu Students</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
 </div>
 <ng-container *ngIf="!logged">
 <div class="text-center container">
   <div style="width: 300px; margin: 0 auto; margin-top: 250px;">
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <h1 class="h3 mb-3 font-weight-normal">Войдите</h1>
       <div>
         <div>
           <label for="user" class="sr-only">Username</label>
@@ -89,8 +192,37 @@
       <button type="button" class="btn btn-primary" (click)="signup()" data-dismiss="modal">Sign Up</button>
     </div>
   </ng-container>
-<ng-container *ngIf="logged">
-    <div class="modal-footer">
-      <button type="button" class="btn btn-primary" (click)="logout()" data-dismiss="modal">Logout</button>
+
+
+
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Вход
+</button>
+-->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Вход</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <label for="user" class="sr-only">Username</label>
+          <input class="form-control" id="user" type="text" placeholder="Username" [(ngModel)]="username">
+        </div>
+        <div style="margin-top: 20px">
+          <label for="password" class="sr-only">Password</label>
+          <input class="form-control" id="password" type="password" placeholder="Password" [(ngModel)]="password">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="auth()" data-dismiss="modal">Sign In</button>
+      </div>
     </div>
-</ng-container>
+  </div>
+</div>
